@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import { Text, Button, Icon } from 'native-base';
+import {COLORS} from "../colors";
 
 const AddTodo = ({ onSubmit }) => {
   const [inputValue, setInputValue] = React.useState('');
@@ -43,11 +44,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 18,
     borderBottomWidth: 1,
-    borderBottomColor: '#fff',
+    borderBottomColor: COLORS.PRIMARY,
     color: '#fff',
   },
   iconBtn: {
-    color: '#fff'
+    color: COLORS.PRIMARY
   },
 });
 

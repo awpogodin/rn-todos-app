@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, Button, Icon, CheckBox } from 'native-base';
+import {COLORS} from "../colors";
 
 const TodosTodo = ({todo, onToggle, onDelete}) => {
   const {title, completed, id} = todo;
@@ -17,7 +18,7 @@ const TodosTodo = ({todo, onToggle, onDelete}) => {
     <View style={styles.todo}>
       <CheckBox
         style={styles.checkbox}
-        color="#2196F3"
+        color={COLORS.PRIMARY}
         checked={completed}
         onPress={onToggleHandler}
       />
