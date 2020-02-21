@@ -13,9 +13,10 @@ const TodosTodo = ({todo, onToggle, onDelete}) => {
   };
 
   return (
-    <View style={styles.todo} onPress={onToggleHandler}>
+    <View style={styles.todo}>
       <Text
         style={completed ? styles.titleDone : styles.title}
+        onPress={onToggleHandler}
       >
         { title }
       </Text>
