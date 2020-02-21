@@ -18,6 +18,7 @@ const AddTodo = ({ onSubmit }) => {
       />
       <Button
         title='Добавить'
+        color="#2196F3"
         onPress={onSubmitHandler}
       />
     </View>
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
     width: '70%',
     borderStyle: 'solid',
     borderBottomWidth: 1,
-    borderBottomColor: '#212121'
+    borderBottomColor: '#fff',
+    color: '#fff',
   },
 });
 

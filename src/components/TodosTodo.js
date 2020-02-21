@@ -35,17 +35,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 5,
     margin: 5,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#9E9E9E',
+    // backgroundColor: '#212121',
+    // borderStyle: 'solid',
+    // borderWidth: 2,
+    // borderColor: '#fff',
+    // borderRadius: 15,
   },
   title: {
     fontWeight: '100',
     fontSize: 30,
+    color: '#fff',
   },
   titleDone: {
     fontWeight: '100',
     fontSize: 30,
+    color: '#fff',
     textDecorationLine: 'line-through'
   },
 });
