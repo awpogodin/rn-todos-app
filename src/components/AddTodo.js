@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, TextInput, Button, View } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { Text, Button, Icon } from 'native-base';
 
 const AddTodo = ({ onSubmit }) => {
   const [inputValue, setInputValue] = React.useState('');
@@ -15,12 +16,17 @@ const AddTodo = ({ onSubmit }) => {
         style={styles.input}
         value={inputValue}
         onChangeText={v => setInputValue(v)}
+        placeholder="Введите задачу"
+        placeholderTextColor="#9E9E9E"
       />
       <Button
-        title='Добавить'
-        color="#2196F3"
+        large
+        title='+'
         onPress={onSubmitHandler}
-      />
+        transparent
+      >
+        <Icon style={styles.iconBtn} name='ios-add-circle-outline' />
+      </Button>
     </View>
   );
 };
@@ -32,11 +38,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    width: '70%',
+    flex: 2,
     borderStyle: 'solid',
+    paddingVertical: 10,
+    fontSize: 18,
     borderBottomWidth: 1,
     borderBottomColor: '#fff',
     color: '#fff',
+  },
+  iconBtn: {
+    color: '#fff'
   },
 });
 

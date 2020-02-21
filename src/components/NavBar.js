@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+// import { Text } from 'native-base';
 
 const NavBar = ({title = 'Navbar'}) => {
   return (
@@ -11,8 +12,8 @@ const NavBar = ({title = 'Navbar'}) => {
 
 const styles = StyleSheet.create({
   navbar: {
-    height: 150,
-    paddingBottom: 5,
+    height: '25%',
+    paddingBottom: 15,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
     fontWeight: '100',
     fontSize: 50,
     color: '#fff',
+    fontFamily: 'sans-serif-thin'
   },
 });
 

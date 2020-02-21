@@ -1,5 +1,8 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect} from 'react';
+import { StyleSheet, View } from 'react-native';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 import NavBar from "./src/components/NavBar";
 import TodosList from "./src/components/TodosList";
 import AddTodo from "./src/components/AddTodo";
@@ -12,6 +15,20 @@ const initTodos = [
 
 export default function App() {
   const [todos, setTodos] = React.useState([...initTodos]);
+  const [isReady, setIsReady] = React.useState(false);
+
+  useEffect(() => {
+    const loadAsync = async () => {
+      await Font.loadAsync({
+        Roboto: require('native-base/Fonts/Roboto.ttf'),
+        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+        ...Ionicons.font,
+      });
+      setIsReady(true);
+    };
+
+    loadAsync();
+  }, []);
 
   const addTodo = (title) => {
     if (title.trim()) {
@@ -46,13 +63,19 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <NavBar title="todos" />
-      <AddTodo onSubmit={addTodo}/>
-      <TodosList
-        todos={todos}
-        onToggle={toggleTodo}
-        onDelete={deleteTodo}
-      />
+      {isReady ? (
+        <>
+          <NavBar title="todos" />
+          <AddTodo onSubmit={addTodo}/>
+          <TodosList
+          todos={todos}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
+          />
+        </>
+      ) : (
+        <AppLoading />
+        )}
     </View>
   );
 }

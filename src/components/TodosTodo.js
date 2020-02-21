@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text, Button, Icon, CheckBox } from 'native-base';
 
 const TodosTodo = ({todo, onToggle, onDelete}) => {
   const {title, completed, id} = todo;
@@ -14,6 +15,12 @@ const TodosTodo = ({todo, onToggle, onDelete}) => {
 
   return (
     <View style={styles.todo}>
+      <CheckBox
+        style={styles.checkbox}
+        color="#2196F3"
+        checked={completed}
+        onPress={onToggleHandler}
+      />
       <Text
         style={completed ? styles.titleDone : styles.title}
         onPress={onToggleHandler}
@@ -21,10 +28,13 @@ const TodosTodo = ({todo, onToggle, onDelete}) => {
         { title }
       </Text>
       <Button
+        style={styles.btn}
         title="×"
-        color="#f44336"
         onPress={onDeleteHandler}
-      />
+        transparent
+      >
+        <Icon style={styles.iconBtn} name='ios-remove-circle-outline' />
+      </Button>
     </View>
   )
 };
@@ -32,25 +42,30 @@ const TodosTodo = ({todo, onToggle, onDelete}) => {
 const styles = StyleSheet.create({
   todo: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 5,
-    margin: 5,
-    // backgroundColor: '#212121',
-    // borderStyle: 'solid',
-    // borderWidth: 2,
-    // borderColor: '#fff',
-    // borderRadius: 15,
+    // justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 5,
+    marginVertical: 5,
+  },
+  checkbox: {
+    marginRight: 20,
   },
   title: {
     fontWeight: '100',
-    fontSize: 30,
+    fontSize: 18,
     color: '#fff',
   },
   titleDone: {
     fontWeight: '100',
-    fontSize: 30,
-    color: '#fff',
+    fontSize: 18,
+    color: '#9E9E9E',
     textDecorationLine: 'line-through'
+  },
+  btn: {
+    marginLeft: 'auto'
+  },
+  iconBtn: {
+    color: '#f44336'
   },
 });
 
