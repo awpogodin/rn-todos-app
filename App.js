@@ -9,12 +9,6 @@ import AddTodo from "./src/components/AddTodo";
 
 const STORAGE = 'Todos';
 
-// const initTodos = [
-//   {id: '1', title: 'Купить хлеб', completed: false},
-//   {id: '2', title: 'Купить молоко', completed: true},
-//   {id: '3', title: 'Купить масло', completed: false},
-// ];
-
 export default function App() {
   const [todos, setTodos] = React.useState([]);
   const [isReady, setIsReady] = React.useState(false);
@@ -34,16 +28,19 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const asyncStoreData = async () => {
-      await _storeData();
-    };
-
-    asyncStoreData();
+    if (isReady) {
+      const asyncStoreData = async () => {
+        await _storeData();
+      };
+      asyncStoreData();
+    }
   }, [todos]);
 
   const _storeData = async () => {
     try {
       await AsyncStorage.setItem(STORAGE, JSON.stringify(todos));
+
+      const value = await AsyncStorage.getItem(STORAGE);
     } catch (error) {
       // Error saving data
     }
@@ -70,7 +67,7 @@ export default function App() {
       setTodos((prevState) => [
         ...prevState,
         newTodo,
-      ])
+      ]);
     }
   };
 
@@ -82,13 +79,13 @@ export default function App() {
         }
         return todo;
       })
-    })
+    });
   };
 
   const deleteTodo = id => {
     setTodos((prevState) => {
       return prevState.filter(todo => todo.id !== id)
-    })
+    });
   };
 
   return (
